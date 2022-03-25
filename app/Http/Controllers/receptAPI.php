@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recept;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class receptAPI extends Controller
 {
     public function getAllRecipe()
     {
-        $recipes = Recept::get()->toJson(JSON_PRETTY_PRINT);
+        $recipes = Recipe::get()->toJson(JSON_PRETTY_PRINT);
         return response($recipes, 200);
     }
 
     public function createRecipe(request $request)
     {
-        $recipe = new Recept();
+        $recipe = new Recipe();
         $recipe->name = $request->name;
         $recipe->category = $request->category;
         $recipe->save();
@@ -30,8 +30,8 @@ class receptAPI extends Controller
 
     public function updateRecipe(Request $request, $id)
     {
-        if (Recept::where("id", $id)->exists()) {
-            $recipe = Recept::find($id);
+        if (Recipe::where("id", $id)->exists()) {
+            $recipe = Recipe::find($id);
             $recipe->name = is_null($request->name)
                 ? $recipe->name
                 : $request->name;
@@ -57,8 +57,8 @@ class receptAPI extends Controller
     }
     public function getRecipe($id)
     {
-        if (Recept::where("id", $id)->exists()) {
-            $recipe = Recept::where("id", $id)
+        if (Recipe::where("id", $id)->exists()) {
+            $recipe = Recipe::where("id", $id)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             return response($recipe, 200);
@@ -74,8 +74,8 @@ class receptAPI extends Controller
 
     public function deleteRecipe($id)
     {
-        if (Recept::where("id", $id)->exists()) {
-            $recipe = Recept::find($id);
+        if (Recipe::where("id", $id)->exists()) {
+            $recipe = Recipe::find($id);
             $recipe->delete();
 
             return response()->json(
