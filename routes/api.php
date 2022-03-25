@@ -19,8 +19,8 @@ Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     return $request->user();
 });
 
-Route::get("recept", [receptAPI::class, "getAllRecipe"]);
-Route::get("recept/{id}", [receptAPI::class, "getRecipe"]);
-Route::post("recept", [receptAPI::class, "createRecipe"]);
-Route::put("recept/{id}", [receptAPI::class, "updateRecipe"]);
-Route::delete("recept/{id}", [receptAPI::class, "deleteRecipe"]);
+Route::get("recipe", [receptAPI::class, "getAllRecipe"]);
+Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
+Route::post("recipe", [receptAPI::class, "createRecipe"]);
+Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
+Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
