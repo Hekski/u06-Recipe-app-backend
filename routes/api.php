@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\TaskController;
 use App\Http\Controllers\receptAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group( function () {
+    Route::resource('tasks', TaskController::class);
+
+    
 });
 
-Route::get("recipe", [receptAPI::class, "getAllRecipe"]);
-Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
-Route::post("recipe", [receptAPI::class, "createRecipe"]);
-Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
-Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
+Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
+    return $request->user();
+    
+    Route::get("recipe", [receptAPI::class, "getAllRecipe"]);
+    Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
+    Route::post("recipe", [receptAPI::class, "createRecipe"]);
+    Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
+    Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
+    
+});
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+
+
