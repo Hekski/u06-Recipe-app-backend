@@ -26,13 +26,14 @@ Route::middleware('auth:sanctum')->group( function () {
 Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     return $request->user();
     
-    Route::get("recipe", [receptAPI::class, "getAllRecipe"]);
-    Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
-    Route::post("recipe", [receptAPI::class, "createRecipe"]);
-    Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
-    Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
     
 });
+
+Route::get("recipe", [receptAPI::class, "getAllRecipe"]);
+Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
+Route::post("recipe", [receptAPI::class, "createRecipe"]);
+Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
+Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
