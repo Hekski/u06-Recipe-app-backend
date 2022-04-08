@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $table = "recepts";
+    protected $table = 'recepts';
 
-    protected $fillable = ["name", "category"];
+    protected $fillable = ['recipe', 'recipe_id', 'recipe_id', 'user_list_id'];
 }

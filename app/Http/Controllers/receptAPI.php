@@ -9,15 +9,16 @@ class receptAPI extends Controller
 {
     public function getAllRecipe()
     {
-        $recipes = Recipe::get()->toJson(JSON_PRETTY_PRINT);
-        return response($recipes, 200);
+        $recepts = Recipe::get()->toJson(JSON_PRETTY_PRINT);
+        return response($recepts, 200);
     }
 
-    public function createRecipe(request $request)
+
+    public function addRecipe(request $request)
     {
         $recipe = new Recipe();
         $recipe->name = $request->name;
-        $recipe->category = $request->category;
+        $recipe->image = $request->image;
         $recipe->save();
 
         return response()->json(
