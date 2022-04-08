@@ -66,7 +66,7 @@ class receptAPI extends Controller
         } else {
             return response()->json(
                 [
-                    "message" => "Recipe not found",
+                    "message" => "List not found",
                 ],
                 404
             );

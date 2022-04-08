@@ -9,6 +9,8 @@ class UserList extends Model
 {
     use HasFactory;
 
+    protected $table = 'user_lists';
+
     protected $fillable = ['user_id', 'title'];
 
     public function user() {

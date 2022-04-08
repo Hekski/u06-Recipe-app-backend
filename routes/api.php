@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\TaskController;
+use App\Http\Controllers\UserListController;
 use App\Http\Controllers\receptAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,7 @@ Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
 
 Route::post("create-userlist/{id}", [UserListController::class, "createList"]);
 Route::post("delete-userlist/{id}", [UserListController::class, "deleteList"]);
-Route::post("userlist/{id}", [UserListController::class, "getList"]);
+Route::get("userlist/{id}", [UserListController::class, "getList"]);
 
 
 Route::post('login', [AuthController::class, 'login']);
