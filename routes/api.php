@@ -30,13 +30,13 @@ Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     
 });
 Route::get("/recipe", [receptAPI::class, "getAllRecipe"]);
-Route::get("recipe/{id}", [receptAPI::class, "getRecipe"]);
-Route::post("recipe", [receptAPI::class, "createRecipe"]);
-Route::put("recipe/{id}", [receptAPI::class, "updateRecipe"]);
+Route::get("get-recipe/{id}", [receptAPI::class, "getRecipe"]);
+Route::post("create-recipe/{id}", [receptAPI::class, "createRecipe"]);
+Route::put("update-recipe/{id}", [receptAPI::class, "updateRecipe"]);
 Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
 
 Route::post("create-userlist/{id}", [UserListController::class, "createList"]);
-Route::post("delete-userlist/{id}", [UserListController::class, "deleteList"]);
+Route::delete("delete-userlist/{id}", [UserListController::class, "deleteList"]);
 Route::get("userlist/{id}", [UserListController::class, "getList"]);
 
 

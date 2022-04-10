@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 class UserListController extends Controller
 {
     // Create list
-    public function createList(request $request) {
+    public function createList(request $request, $id) {
 
         $user_lists = new UserList();
         $user_lists->title = $request->title;
-        $user_lists->user_id = $request->user_id;
+        $user_lists->user_id = $id;
         $user_lists->save();
 
         return response()->json(
@@ -43,11 +43,11 @@ class UserListController extends Controller
     }
     
     // deleteList
-    public function deleteList($user_id)
+    public function deleteList($id)
     {
-        if (UserList::where("user_id", $user_id)->exists()) {
-            $recipe = UserList::find($user_id);
-            $recipe->delete();
+        if (UserList::where("id", $id)->exists()) {
+            $list = UserList::find($id);
+            $list->delete();
 
             return response()->json(
                 [

@@ -14,7 +14,7 @@ class receptAPI extends Controller
     }
 
 
-    public function addRecipe(request $request)
+    public function addRecipe(request $request, $id)
     {
         $recipe = new Recipe();
         $recipe->name = $request->name;
