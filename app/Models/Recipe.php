@@ -9,5 +9,5 @@ class Recipe extends Model
 {
     protected $table = 'recipes';
 
-    protected $fillable = ['recipe', 'recipe_id', 'recipe_id', 'user_list_id'];
+    protected $fillable = ['recipe', 'image', 'recipe_id', 'user_list_id'];
 }

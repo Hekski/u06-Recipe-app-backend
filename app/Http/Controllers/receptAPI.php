@@ -56,21 +56,36 @@ class receptAPI extends Controller
             );
         }
     }
-    public function getRecipe($id)
+    public function getRecipe($user_list_id)
     {
-        if (Recipe::where("id", $id)->exists()) {
-            $recipe = Recipe::where("id", $id)
+        if (Recipe::where("user_list_id", $user_list_id)->exists()) {
+            $recipe = Recipe::where('user_list_id', $user_list_id)
                 ->get()
                 ->toJson(JSON_PRETTY_PRINT);
             return response($recipe, 200);
         } else {
             return response()->json(
                 [
-                    "message" => "List not found",
+                    "message" => "Recipe not found",
                 ],
                 404
             );
         }
+        /* if (Recipe::where("id", $id)->exists()) {
+            $recipe = Recipe::where("image", $image);
+            $recipe = Recipe::where("recipe_id", $recipe_id);
+            $recipe = Recipe::where("user_list_id", $user_list_id)
+                ->get()
+                ->toJson(JSON_PRETTY_PRINT);
+            return response($recipe, 200);
+        } else {
+            return response()->json(
+                [
+                    "message" => "Recipe not found",
+                ],
+                404
+            );
+        } */
     }
 
     public function deleteRecipe($id)

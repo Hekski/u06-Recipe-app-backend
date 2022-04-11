@@ -30,8 +30,8 @@ Route::middleware("auth:sanctum")->get("/user", function (Request $request) {
     
 });
 Route::get("/recipe", [receptAPI::class, "getAllRecipe"]);
-Route::get("get-recipe/{id}", [receptAPI::class, "getRecipe"]);
-Route::post("create-recipe/{id}", [receptAPI::class, "createRecipe"]);
+Route::get("get-recipe/{user_list_id}", [receptAPI::class, "getRecipe"]);
+Route::post("add-recipe/{id}", [receptAPI::class, "addRecipe"]);
 Route::put("update-recipe/{id}", [receptAPI::class, "updateRecipe"]);
 Route::delete("recipe/{id}", [receptAPI::class, "deleteRecipe"]);
 
