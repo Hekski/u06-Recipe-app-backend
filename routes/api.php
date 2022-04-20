@@ -19,13 +19,13 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put("update-recipe/{id}", [receptAPI::class, "updateRecipe"]);
     Route::get("get-recipe/{user_list_id}", [receptAPI::class, "getRecipe"]);
     Route::delete("delete-recipe/{id}", [receptAPI::class, "deleteRecipe"]);
+    Route::get("/recipe", [receptAPI::class, "getAllRecipe"]); //Not used
     
     Route::post("create-userlist/{id}", [UserListController::class, "createList"]);
     Route::delete("delete-userlist/{id}", [UserListController::class, "deleteList"]);
     Route::get("userlist/{id}", [UserListController::class, "getList"]);
 });
 
-// Route::get("/recipe", [receptAPI::class, "getAllRecipe"]);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
